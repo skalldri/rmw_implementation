@@ -41,6 +41,8 @@ option(RMW_IMPLEMENTATION_DISABLE_RUNTIME_SELECTION "\
   environment variable"
   ${rmw_implementation_disable_runtime_selection_default})
 
+find_package(rmw REQUIRED)
+
 if(RMW_IMPLEMENTATION_DISABLE_RUNTIME_SELECTION)
   message(STATUS "Runtime selection of RMW disabled; Only using "
     "'${RMW_IMPLEMENTATION}'")
@@ -50,7 +52,6 @@ else()
   find_package(ament_index_cpp REQUIRED)
   find_package(rcpputils REQUIRED)
   find_package(rcutils REQUIRED)
-  find_package(rmw REQUIRED)
 
   add_library(${PROJECT_NAME} SHARED
     src/functions.cpp)
